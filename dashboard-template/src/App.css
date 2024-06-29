@@ -1,0 +1,169 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+.main-content {
+  margin-left: 20ch; /* Same width as the sidebar */
+  padding: 20px; /* Optional: Add padding for spacing */
+}
+
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.sidebar {
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 20ch;
+  background-color: #f8f9fa;
+  padding-top: 20px;
+  padding-left: 10px;
+  padding-right: 10px;
+  border-right: 1px solid #dee2e6;
+}
+
+.sidebar .nav-link {
+  margin-bottom: 10px;
+}
+
+.headerRow {
+  background-color: #282c34;
+  color: white;
+}
+
+.headerCol1 {
+  color: white
+}
+
+.contentRow1 {
+  background-color: #282c34;
+  height: 30vh;
+  color: white;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1ch; /* Adjust the gap size as needed */
+}
+
+.contentRow1Col1 {
+  background-color: red;
+}
+
+.contentRow1Col2{
+  background-color: orange;
+}
+
+.contentRow1Col3{
+  background-color: green;
+  color: black
+}
+
+.contentRow1Col4{
+  background-color: blue;
+}
+
+.contentRow1Col5{
+  background-color: indigo;
+}
+
+.gapRow1 {
+  background-color: #282c34;
+  color: white;
+}
+
+.contentRow2 {
+  height: 30vh;
+}
+
+.contentRow2Col1 {
+  background-color: red;
+  color: white;
+}
+
+.gapRow2 {
+  background-color: #282c34;
+  color: white;
+}
+
+.contentRow3 {
+  height: 30vh;
+}
+
+.contentRow3Col1 {
+  background-color: orange;
+  color: white;
+}
+
+.gapRow3 {
+  background-color: #282c34;
+  color: white;
+}
+
+.contentRow4 {
+  height: 30vh;
+}
+
+.contentRow4Col1 {
+  background-color: green;
+  color: white;
+}
+
+.gapRow4 {
+  background-color: #282c34;
+  color: white;
+}
+
+.contentRow5 {
+  height: 30vh;
+}
+
+.contentRow5Col1 {
+  background-color: blue;
+  color: white;
+}
+
+.gapRow5 {
+  background-color: #282c34;
+  color: white;
+}
+
+.contentRow6 {
+  height: 30vh;
+}
+
+.contentRow6Col1 {
+  background-color: indigo;
+  color: white;
+}
+
+.gapRow6 {
+  background-color: #282c34;
+  color: white;
+}
