@@ -73,7 +73,7 @@
 }
 
 .contentRow1Col1 {
-  background-color: red;
+  background-color: white;
 }
 
 .contentRow1Col2{
@@ -99,11 +99,10 @@
 }
 
 .contentRow2 {
-  height: 30vh;
+  height: 40vh;
 }
 
 .contentRow2Col1 {
-  background-color: red;
   color: white;
 }
 
@@ -166,4 +165,16 @@
 .gapRow6 {
   background-color: #282c34;
   color: white;
+}
+
+.AccordionBodyCol1{
+  height: 40vh;
+}
+
+/*
+Animations
+*/
+
+.accordion-item {
+  transition: transform 0.5s ease-in-out;
 }

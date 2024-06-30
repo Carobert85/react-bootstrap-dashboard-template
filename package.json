@@ -1,0 +1,13 @@
+{
+  "dependencies": {
+    "array-move": "^4.0.0",
+    "bootstrap": "^5.3.3",
+    "d3": "^7.9.0",
+    "react-beautiful-dnd": "^13.1.1",
+    "react-bootstrap": "^2.10.3",
+    "react-d3-library": "^1.1.8",
+    "react-sortable-hoc": "^2.0.0",
+    "react-sortablejs": "^6.1.4",
+    "sortablejs": "^1.15.2"
+  }
+}

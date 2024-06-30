@@ -1,7 +1,8 @@
 import logo from './logo.svg';
 import './App.css';
-import Grid from "./components/grid/grid";
+import Grid from "./components/grids/Grid";
 import Sidebar from "./components/nav/Sidebar";
+import SortableAccordion from "./components/accordion/SortableAccordion";
 
 function App() {
     return (
@@ -14,6 +15,11 @@ function App() {
                 <div className="grid">
 
                     <Grid></Grid>
+                </div>
+
+
+                <div className="App">
+                    <SortableAccordion/>
                 </div>
 
             </div>

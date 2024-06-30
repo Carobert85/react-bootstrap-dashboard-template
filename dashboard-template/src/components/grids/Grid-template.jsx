@@ -26,14 +26,6 @@ function Grid() {
             <Row className="contentRow2">
                 <Col className="contentRow2Col1">
                     1 of 1
-                    {/*<Accordion>*/}
-                    {/*    <Accordion.Item eventKey="0">*/}
-                    {/*        <Accordion.Header>Content row 2</Accordion.Header>*/}
-                    {/*        <Accordion.Body>*/}
-                    {/*            1 of 1*/}
-                    {/*        </Accordion.Body>*/}
-                    {/*    </Accordion.Item>*/}
-                    {/*</Accordion>*/}
                 </Col>
             </Row>
 
