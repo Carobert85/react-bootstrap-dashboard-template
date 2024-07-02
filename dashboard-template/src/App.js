@@ -17,11 +17,6 @@ function App() {
                     <Grid></Grid>
                 </div>
 
-
-                <div className="App">
-                    <SortableAccordion/>
-                </div>
-
             </div>
 
         </div>

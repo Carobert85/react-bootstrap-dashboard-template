@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Accordion, Card, useAccordionButton } from 'react-bootstrap';
 import AccordionHeaderGrid from '../grids/AccordionHeaderGrid';
 import AccordionBodyGrid from '../grids/AccordionBodyGrid'; // Ensure the path is correct
+import { CSSTransition, TransitionGroup } from 'react-transition-group';
 
 const SortableAccordion = () => {
     const [items, setItems] = useState([
@@ -19,7 +20,12 @@ const SortableAccordion = () => {
                 ],
                 colorScheme: 'steelblue',
                 headerName: 'Monthly Data',
-                axisColor: 'black'
+                axisColor: 'black',
+                keyData: [
+                    { name: 'Positive Change', positive: true },
+                    { name: 'Negative Change', positive: false }
+                ],
+                showLegend: true
             }
         },
         {
@@ -36,7 +42,8 @@ const SortableAccordion = () => {
                 ],
                 colorScheme: 'red',
                 headerName: 'Sales Data',
-                axisColor: 'green'
+                axisColor: 'green',
+                showLegend: false
             }
         },
         {
@@ -53,7 +60,8 @@ const SortableAccordion = () => {
                 ],
                 colorScheme: 'blue',
                 headerName: 'Growth Data',
-                axisColor: 'purple'
+                axisColor: 'purple',
+                showLegend: false
             }
         },
         {
@@ -70,7 +78,8 @@ const SortableAccordion = () => {
                 ],
                 colorScheme: 'orange',
                 headerName: 'Decline Data',
-                axisColor: 'blue'
+                axisColor: 'blue',
+                showLegend: false
             }
         },
     ]);
@@ -111,37 +120,43 @@ const SortableAccordion = () => {
 
     return (
         <Accordion defaultActiveKey={allKeys} alwaysOpen>
-            {items.map((item, index) => (
-                <Accordion.Item eventKey={index.toString()} key={item.key} className="accordion-item">
-                    <Card>
-                        <Card.Header>
-                            <ToggleButton eventKey={index.toString()}>
-                                <AccordionHeaderGrid
-                                    headerText={item.title}
-                                    onMoveUp={() => moveItem(index, index - 1)}
-                                    onMoveDown={() => moveItem(index, index + 1)}
-                                    disableUp={index === 0}
-                                    disableDown={index === items.length - 1}
-                                />
-                            </ToggleButton>
-                        </Card.Header>
-                        <Accordion.Collapse
-                            eventKey={index.toString()}
-                            onEntered={() => handleDimensionsChange(index, { width: 0, height: 0 })}
-                        >
-                            <Card.Body>
-                                <AccordionBodyGrid
-                                    data={item.chartProps.data}
-                                    colorScheme={item.chartProps.colorScheme}
-                                    headerName={item.chartProps.headerName}
-                                    axisColor={item.chartProps.axisColor}
-                                    onDimensionsChange={(dims) => handleDimensionsChange(index, dims)}
-                                />
-                            </Card.Body>
-                        </Accordion.Collapse>
-                    </Card>
-                </Accordion.Item>
-            ))}
+            <TransitionGroup>
+                {items.map((item, index) => (
+                    <CSSTransition key={item.key} timeout={300} classNames="accordion-item">
+                        <Accordion.Item eventKey={index.toString()} key={item.key} className="accordion-item">
+                            <Card>
+                                <Card.Header>
+                                    <ToggleButton eventKey={index.toString()}>
+                                        <AccordionHeaderGrid
+                                            headerText={item.title}
+                                            onMoveUp={() => moveItem(index, index - 1)}
+                                            onMoveDown={() => moveItem(index, index + 1)}
+                                            disableUp={index === 0}
+                                            disableDown={index === items.length - 1}
+                                        />
+                                    </ToggleButton>
+                                </Card.Header>
+                                <Accordion.Collapse
+                                    eventKey={index.toString()}
+                                    onEntered={() => handleDimensionsChange(index, { width: 0, height: 0 })}
+                                >
+                                    <Card.Body>
+                                        <AccordionBodyGrid
+                                            data={item.chartProps.data}
+                                            colorScheme={item.chartProps.colorScheme}
+                                            headerName={item.chartProps.headerName}
+                                            axisColor={item.chartProps.axisColor}
+                                            keyData={item.chartProps.keyData}
+                                            showLegend={item.chartProps.showLegend}
+                                            onDimensionsChange={(dims) => handleDimensionsChange(index, dims)}
+                                        />
+                                    </Card.Body>
+                                </Accordion.Collapse>
+                            </Card>
+                        </Accordion.Item>
+                    </CSSTransition>
+                ))}
+            </TransitionGroup>
         </Accordion>
     );
 };

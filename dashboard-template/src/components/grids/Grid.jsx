@@ -2,7 +2,8 @@ import React, { useState, useEffect, useRef } from 'react';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-import LineChart from '../graphs/LineChart'; // Make sure the path to LineChart is correct
+import LineChart from '../graphs/LineChart';
+import SortableAccordion from "../accordion/SortableAccordion"; // Make sure the path to LineChart is correct
 
 function Grid() {
     const [dimensions1, setDimensions1] = useState({ width: 0, height: 0 });
@@ -58,60 +59,29 @@ function Grid() {
                 <Col className="contentRow1Col5">5 of 5</Col>
             </Row>
 
-            <Row className="gapRow1">
-                <Col className="gapRow1Col1">gap row 1</Col>
-            </Row>
+            {/*<Row className="gapRow1">*/}
+            {/*    <Col className="gapRow1Col1">gap row 1</Col>*/}
+            {/*</Row>*/}
 
             <Row className="contentRow2">
-                <Col className="contentRow2Col1" ref={chartContainerRef2} style={{ position: 'relative' }}>
-                    {dimensions2.width > 0 && dimensions2.height > 0 && (
-                        <LineChart
-                            data={fakeData}
-                            colorScheme="blue"
-                            headerName="Monthly Data"
-                            width={dimensions2.width}
-                            height={dimensions2.height}
-                            axisColor="black"
-                        />
-                    )}
+                <Col className="contentRow2Col1" ref={chartContainerRef2} style={{position: 'relative'}}>
+                    {/*{dimensions2.width > 0 && dimensions2.height > 0 && (*/}
+                    {/*    <LineChart*/}
+                    {/*        data={fakeData}*/}
+                    {/*        colorScheme="blue"*/}
+                    {/*        headerName="Monthly Data"*/}
+                    {/*        width={dimensions2.width}*/}
+                    {/*        height={dimensions2.height}*/}
+                    {/*        axisColor="black"*/}
+                    {/*    />*/}
+                    {/*)}*/}
+                    <div className="Accordion-graph">
+                        <SortableAccordion/>
+                    </div>
+
                 </Col>
             </Row>
 
-            <Row className="gapRow2">
-                <Col className="gapRow2Col1">gap row 2</Col>
-            </Row>
-
-            <Row className="contentRow3">
-                <Col className="contentRow3Col1">1 of 1</Col>
-            </Row>
-
-            <Row className="gapRow3">
-                <Col className="gapRow3Col1">gap row 3</Col>
-            </Row>
-
-            <Row className="contentRow4">
-                <Col className="contentRow4Col1">1 of 1</Col>
-            </Row>
-
-            <Row className="gapRow4">
-                <Col className="gapRow4Col1">gap row 4</Col>
-            </Row>
-
-            <Row className="contentRow5">
-                <Col className="contentRow5Col1">1 of 1</Col>
-            </Row>
-
-            <Row className="gapRow5">
-                <Col className="gapRow5Col1">gap row 5</Col>
-            </Row>
-
-            <Row className="contentRow6">
-                <Col className="contentRow6Col1">1 of 1</Col>
-            </Row>
-
-            <Row className="gapRow6">
-                <Col className="gapRow6Col1">gap row 6</Col>
-            </Row>
         </Container>
     );
 }

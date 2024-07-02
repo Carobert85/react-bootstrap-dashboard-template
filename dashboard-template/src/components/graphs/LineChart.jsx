@@ -1,13 +1,13 @@
 import React, { useEffect, useRef } from 'react';
 import * as d3 from 'd3';
 
-const LineChart = ({ data, colorScheme, headerName, width, height, axisColor }) => {
+const LineChart = ({ data, colorScheme, headerName, width, height, axisColor, keyData, showLegend }) => {
     const chartRef = useRef(null);
 
     useEffect(() => {
         if (data.length === 0) return;
 
-        const margin = { top: 40, right: 30, bottom: 30, left: 40 };
+        const margin = { top: 40, right: showLegend ? 150 : 30, bottom: 30, left: 40 };
         const chartWidth = width - margin.left - margin.right;
         const chartHeight = height - margin.top - margin.bottom;
 
@@ -62,10 +62,46 @@ const LineChart = ({ data, colorScheme, headerName, width, height, axisColor }) 
             .style('font-weight', 'bold')
             .text(headerName);
 
+        if (showLegend) {
+            // Create the legend
+            const legend = svg.append('g')
+                .attr('class', 'legend')
+                .attr('transform', `translate(${chartWidth + 20}, 0)`);
+
+            legend.selectAll('g')
+                .data(keyData)
+                .enter()
+                .append('g')
+                .attr('transform', (d, i) => `translate(0, ${i * 40})`)
+                .each(function (d) {
+                    const g = d3.select(this);
+                    g.append('circle')
+                        .attr('cx', 0)
+                        .attr('cy', 0)
+                        .attr('r', 8) // Increase radius to make circles larger
+                        .attr('fill', d.positive ? 'green' : 'red');
+
+                    g.append('text')
+                        .attr('x', 15)
+                        .attr('y', 5)
+                        .attr('class', 'legend-text')
+                        .text(d.name)
+                        .style('font-size', '12px');
+
+                    g.append('text')
+                        .attr('x', 0)
+                        .attr('y', 3) // Center the arrow vertically in the circle
+                        .attr('text-anchor', 'middle')
+                        .style('font-size', '12px')
+                        .style('fill', 'white')
+                        .text(d.positive ? '↑' : '↓');
+                });
+        }
+
         return () => {
             d3.select(chartRef.current).selectAll('*').remove();
         };
-    }, [data, colorScheme, headerName, width, height, axisColor]);
+    }, [data, colorScheme, headerName, width, height, axisColor, keyData, showLegend]);
 
     return <svg ref={chartRef}></svg>;
 };

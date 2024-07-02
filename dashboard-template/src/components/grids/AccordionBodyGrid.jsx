@@ -4,7 +4,7 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import LineChart from '../graphs/LineChart'; // Ensure the path is correct
 
-const AccordionBodyGrid = ({ data, colorScheme, headerName, axisColor, onDimensionsChange }) => {
+const AccordionBodyGrid = ({ data, colorScheme, headerName, axisColor, keyData, showLegend, onDimensionsChange }) => {
     const containerRef = useRef(null);
     const [dimensions, setDimensions] = useState({ width: 0, height: 0 });
 
@@ -41,6 +41,8 @@ const AccordionBodyGrid = ({ data, colorScheme, headerName, axisColor, onDimensi
                             width={dimensions.width}
                             height={dimensions.height}
                             axisColor={axisColor}
+                            keyData={keyData}
+                            showLegend={showLegend}
                         />
                     )}
                 </Col>
